@@ -12,6 +12,9 @@ def home(request):
 def syllabus(request):
     return render(request, 'home/syllabus.html')
 
+def courses(request):
+    return render(request, 'home/courses.html')
+
 def book(request):
     if request.method == 'POST':
         standard = request.POST['standard']
@@ -66,3 +69,31 @@ def logoutuser(request):
 
 def learn(request):
     return render(request, 'home/learn.html')
+
+
+def class6(request):
+    return render(request, 'home/class6.html')
+
+
+def class7(request):
+    return render(request, 'home/class7.html')
+
+
+def class8(request):
+    return render(request, 'home/class8.html')
+
+
+def class9(request):
+    return render(request, 'home/class9.html')
+
+
+def class10(request):
+    return render(request, 'home/class10.html')
+
+
+def class11(request):
+    return render(request, 'home/class11.html')
+
+
+def class12(request):
+    return render(request, 'home/class12.html')
