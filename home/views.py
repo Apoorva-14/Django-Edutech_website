@@ -13,19 +13,18 @@ def syllabus(request):
     return render(request, 'home/syllabus.html')
 
 def book(request):
-    messages.success(request, 'Welcome to book')
     if request.method == 'POST':
         standard = request.POST['standard']
         name = request.POST['name']
         email = request.POST['email']
         phone = request.POST['phone']
         childname = request.POST['childname']
-        if (standard <= 5 and standard >= 13) or len(phone)<10:
+        if len(email)<3 or len(phone)<10 or len(phone)>10:
             messages.error(request, "Please fill the form correctly")
         else:
             book = Book(standard=standard, name=name, email=email, phone=phone, childname=childname)
             book.save()
-            messages.success(request, "Class booked")
+            messages.info(request, "Class booked")
 
     return render(request, 'home/book.html')
 
