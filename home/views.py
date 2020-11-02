@@ -3,10 +3,32 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
-
+from .models import Book
+from django.contrib import messages
 
 def home(request):
     return render(request, 'home/home.html')
+
+def syllabus(request):
+    return render(request, 'home/syllabus.html')
+
+def book(request):
+    messages.success(request, 'Welcome to book')
+    if request.method == 'POST':
+        standard = request.POST['standard']
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        childname = request.POST['childname']
+        if (standard <= 5 and standard >= 13) or len(phone)<10:
+            messages.error(request, "Please fill the form correctly")
+        else:
+            book = Book(standard=standard, name=name, email=email, phone=phone, childname=childname)
+            book.save()
+            messages.success(request, "Class booked")
+
+    return render(request, 'home/book.html')
+
 
 
 def signupuser(request):

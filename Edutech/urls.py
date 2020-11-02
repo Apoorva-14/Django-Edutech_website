@@ -28,4 +28,6 @@ urlpatterns = [
     #Functionalities
     path('', views.home, name='home'),
     path('learn/', views.learn, name='learn'),
+    path('syllabus/', views.syllabus, name='syllabus'),
+    path('book/', views.book, name='book'),
 ]
